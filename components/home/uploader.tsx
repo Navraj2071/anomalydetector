@@ -13,6 +13,9 @@ export default function UploadPage() {
       <h1 className="text-3xl font-bold mb-6 text-gray-800">
         Anomaly Detection
       </h1>
+      <h2 className="text-l text-gray-500">
+        The application checks for anomalies in satellite images of crop fields.
+      </h2>
       <h3 className="text-gray-700 ">
         *Authentication isn't used for easy access.
       </h3>
