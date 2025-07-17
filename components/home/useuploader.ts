@@ -23,7 +23,7 @@ const useUploader = () => {
         body: formData,
       });
       const result = await response.json();
-      console.log(result);
+
       if (response.ok) {
         toast.success("Anomaly Detection Successfull.");
         setAnalysisResult(result);
