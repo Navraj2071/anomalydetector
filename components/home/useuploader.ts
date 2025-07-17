@@ -7,37 +7,9 @@ const useUploader = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState("");
   const [files, setFiles] = useState<File[]>([]);
-  const [analysisResult, setAnalysisResult] = useState([
-    {
-      anomaly_score: 6,
-      image_index: 0,
-      reasoning:
-        "The field in the lower center of the image shows a significant amount of browning, potentially indicating drought stress or nutrient deficiency. The other fields appear healthy.",
-    },
-    {
-      anomaly_score: 6,
-      image_index: 0,
-      reasoning:
-        "The field in the lower center of the image shows a significant amount of browning, potentially indicating drought stress or nutrient deficiency. The other fields appear healthy.",
-    },
-    {
-      anomaly_score: 6,
-      image_index: 0,
-      reasoning:
-        "The field in the lower center of the image shows a significant amount of browning, potentially indicating drought stress or nutrient deficiency. The other fields appear healthy.",
-    },
-    {
-      anomaly_score: 6,
-      image_index: 0,
-      reasoning:
-        "The field in the lower center of the image shows a significant amount of browning, potentially indicating drought stress or nutrient deficiency. The other fields appear healthy.",
-    },
-  ]);
+  const [analysisResult, setAnalysisResult] = useState([]);
 
   const uploadFiles = async (files: File[]) => {
-    setFiles(files);
-    return;
-
     setIsLoading(true);
     setStatus("Uploading files...");
     const formData = new FormData();

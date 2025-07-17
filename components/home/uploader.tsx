@@ -3,13 +3,14 @@ import useUploader from "./useuploader";
 import Loader from "./loader";
 import toast, { Toaster } from "react-hot-toast";
 import Resultviewer from "./resultviewer";
+import Link from "next/link";
 
 export default function UploadPage() {
   const uploader = useUploader();
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6">
-      <h1 className="text-3xl font-bold mb-6 text-gray-800 border-border">
+      <h1 className="text-3xl font-bold mb-6 text-gray-800">
         Anomaly Detection
       </h1>
       <h3 className="text-gray-700 ">
@@ -37,6 +38,19 @@ export default function UploadPage() {
       {uploader?.isLoading && <Loader message={uploader?.status} />}
       <Toaster position="bottom-right" reverseOrder={false} />
       <Resultviewer images={uploader.files} results={uploader.analysisResult} />
+      <br />
+      <div className="flex flex-col text-center">
+        <Link href={"/examples"} className="text-blue-700">
+          See Example Images
+        </Link>
+        <Link
+          href={"https://github.com/Navraj2071/anomalydetector.git"}
+          className="text-blue-700"
+          target="_blank"
+        >
+          Github link
+        </Link>
+      </div>
     </div>
   );
 }
