@@ -1,5 +1,5 @@
 const Legend = () => {
-  const colors = Array.from({ length: 10 }, (_, i) => (i * 255) / 10);
+  const colors = Array.from({ length: 10 }, (_, i) => ((i + 1) * 255) / 10);
 
   return (
     <div>
