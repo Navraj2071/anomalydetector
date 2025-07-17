@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import Legend from "./legend";
+import ResultRow from "./resiltrow";
 
 type ViewerProps = {
   images: File[];
@@ -38,6 +40,7 @@ const Resultviewer = ({ images, results }: ViewerProps) => {
       <h1 className="text-xl font-bold mb-6 text-gray-800">
         Analysis Results:
       </h1>
+      <Legend />
       {data.map((datapoint, i) => (
         <ResultRow key={i} datapoint={datapoint} />
       ))}
@@ -46,41 +49,3 @@ const Resultviewer = ({ images, results }: ViewerProps) => {
 };
 
 export default Resultviewer;
-
-type ResultRowProps = {
-  datapoint: Datapoint;
-};
-
-const ResultRow = ({ datapoint }: ResultRowProps) => {
-  const redColor = (datapoint?.result?.anomaly_score * 255) / 10;
-
-  const greenColor = 255 - redColor;
-
-  const color = `rgba(${redColor}, ${greenColor}, 0)`;
-
-  return (
-    <div className="flex flex-wrap gap-2.5">
-      <div
-        style={{
-          width: "20px",
-          background: color,
-        }}
-      />
-      <Image
-        height={300}
-        width={200}
-        src={datapoint?.url}
-        alt="uploaded image"
-      />
-      <div className="flex flex-col justify-between p-2.5">
-        <div className="font-bold">
-          Anomaly Score: {datapoint?.result?.anomaly_score}
-        </div>
-
-        <div className="max-w-[300px] text-xs">
-          {datapoint?.result?.reasoning}
-        </div>
-      </div>
-    </div>
-  );
-};
